@@ -30,17 +30,17 @@ public class SELogger {
 
     public void info(String message){
         if(logLevel == LogLevel.INFO)
-            printMessage("[INFO]" + message);
+            printMessage("[INFO] " + message);
     }
 
     public void warn(String message){
         if(logLevel == LogLevel.INFO || logLevel == LogLevel.WARN)
-            printMessage("[WARN]" + message);
+            printMessage("[WARN] " + message);
     }
 
     public void error(String message){
         if(logLevel == LogLevel.INFO || logLevel == LogLevel.WARN || logLevel == LogLevel.ERROR)
-            printMessage("[ERROR]" + message);
+            printMessage("[ERROR] " + message);
     }
 
 }
