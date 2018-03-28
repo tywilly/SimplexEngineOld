@@ -5,6 +5,7 @@ import static org.lwjgl.glfw.GLFW.*;
 import com.tywilly.SimplexEngine.graphics.Renderer;
 import com.tywilly.SimplexEngine.util.SELogger;
 import com.tywilly.SimplexEngine.window.Window;
+import org.lwjgl.opengl.GL;
 
 public abstract class SimplexEngine {
 
@@ -31,6 +32,8 @@ public abstract class SimplexEngine {
                 logger.error("Failed to create window!");
 
         logger.info("Starting game loop");
+
+        GL.createCapabilities(); // This is very important.
 
         while(!glfwWindowShouldClose(window.getWindowID())){
             //LOOOP
