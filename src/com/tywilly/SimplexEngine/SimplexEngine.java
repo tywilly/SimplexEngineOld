@@ -24,6 +24,8 @@ public abstract class SimplexEngine {
         this.window = window;
     }
 
+    public Window getWindow() { return this.window; }
+
     public SceneManager getSceneManager(){
         return sceneManager;
     }
@@ -38,15 +40,13 @@ public abstract class SimplexEngine {
         renderer = new Renderer(this);
         renderer.init();
 
-        if(window != null)
-            if(window.initWindow() != 0)
-                logger.error("Failed to create window!");
-
         sceneManager = new SceneManager(this);
 
         logger.info("Starting game loop");
 
         GL.createCapabilities(); // This is very important.
+
+        renderer.setUpView();
 
         while(!glfwWindowShouldClose(window.getWindowID())){
             //LOOOP

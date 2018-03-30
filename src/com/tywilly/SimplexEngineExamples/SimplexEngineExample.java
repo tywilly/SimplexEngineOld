@@ -1,6 +1,8 @@
 package com.tywilly.SimplexEngineExamples;
 
 import com.tywilly.SimplexEngine.SimplexEngine;
+import com.tywilly.SimplexEngine.gameobject.entity.Entity;
+import com.tywilly.SimplexEngine.scene.Scene;
 import com.tywilly.SimplexEngine.window.Window;
 
 public class SimplexEngineExample extends SimplexEngine {
@@ -12,6 +14,21 @@ public class SimplexEngineExample extends SimplexEngine {
 
         //Initialize the base Engine
         this.initBase();
+
+        Scene mainScene = new Scene(){
+
+            @Override
+            public void onLoad() {
+                this.addGameObject(new Entity(0,0,0));
+            }
+
+            @Override
+            public void onDestroy() {
+
+            }
+        };
+
+        getSceneManager().loadScene(mainScene);
 
     }
 

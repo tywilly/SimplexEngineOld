@@ -16,6 +16,10 @@ public abstract class Scene {
         return objectList;
     }
 
+    public void addGameObject(GameObject gameObject){
+        objectList.add(gameObject);
+    }
+
     public abstract void onLoad();
 
     public abstract void onDestroy();

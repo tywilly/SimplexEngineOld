@@ -3,7 +3,7 @@ package com.tywilly.SimplexEngine.gameobject;
 /**
  * GameObject represents a very basic object in the game.
  */
-public class GameObject {
+public abstract class GameObject {
 
     private float x,y,z;
 

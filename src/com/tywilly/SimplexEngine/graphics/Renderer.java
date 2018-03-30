@@ -28,6 +28,10 @@ public class Renderer {
 
         if(!glfwInit())
             logger.error("Failed to init GLFW!");
+
+        if(engineContext.getWindow().initWindow() != 0)
+            logger.error("Failed to initialize window");
+
     }
 
     public void cleanUp(){
@@ -35,6 +39,13 @@ public class Renderer {
 
         glfwTerminate();
 
+    }
+
+    public void setUpView(){
+        glMatrixMode(GL_PROJECTION);
+        glLoadIdentity();
+        glOrtho(0, engineContext.getWindow().getWidth(), engineContext.getWindow().getHeight(), 0, 1, -1);
+        glMatrixMode(GL_MODELVIEW);
     }
 
     public void renderLoop(){
