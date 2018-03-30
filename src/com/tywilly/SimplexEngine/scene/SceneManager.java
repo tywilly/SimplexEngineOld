@@ -1,16 +1,27 @@
 package com.tywilly.SimplexEngine.scene;
 
+import com.tywilly.SimplexEngine.SimplexEngine;
 import com.tywilly.SimplexEngine.util.SELogger;
 
 public class SceneManager {
 
+    public static final Scene EMPTY_SCENE = new Scene(){
+        @Override
+        public void onLoad() {}
+        @Override
+        public void onDestroy() {}
+    };
+
     private Scene currentScene;
     private SELogger logger;
 
+    private SimplexEngine engineContext;
 
-    public SceneManager(){
+    public SceneManager(SimplexEngine engineContext){
+        this.engineContext = engineContext;
         logger = new SELogger("SceneManager");
-        logger.info("SceneManager initialized");
+
+        currentScene = SceneManager.EMPTY_SCENE;
     }
 
     public Scene getCurrentScene(){

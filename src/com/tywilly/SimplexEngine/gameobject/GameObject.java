@@ -37,4 +37,10 @@ public class GameObject {
         return z;
     }
 
+    public void onDraw(){}
+
+    public void onUpdate(long deltaTime){}
+
+    public void onInput(){}
+
 }

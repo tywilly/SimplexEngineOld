@@ -24,17 +24,25 @@ public abstract class SimplexEngine {
         this.window = window;
     }
 
+    public SceneManager getSceneManager(){
+        return sceneManager;
+    }
+
+    public Renderer getRenderer(){
+        return renderer;
+    }
+
     public void initBase(){
         logger.info("Initializing SimplexEngine");
 
-        renderer = new Renderer();
+        renderer = new Renderer(this);
         renderer.init();
 
         if(window != null)
             if(window.initWindow() != 0)
                 logger.error("Failed to create window!");
 
-        sceneManager = new SceneManager();
+        sceneManager = new SceneManager(this);
 
         logger.info("Starting game loop");
 
@@ -48,6 +56,17 @@ public abstract class SimplexEngine {
             glfwSwapBuffers(window.getWindowID());
             glfwPollEvents();
         }
+
+        //The window has closed!
+        shutdown();
+
+    }
+
+    public void cleanUp(){
+
+        logger.info("Shutting down SimplexEngine");
+
+        renderer.cleanUp();
 
     }
 

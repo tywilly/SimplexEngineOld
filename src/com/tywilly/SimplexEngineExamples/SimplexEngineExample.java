@@ -18,6 +18,9 @@ public class SimplexEngineExample extends SimplexEngine {
     @Override
     public void shutdown() {
 
+        //Clean up all systems of the Engine
+        this.cleanUp();
+
     }
 
 
