@@ -19,7 +19,9 @@ public class SimplexEngineExample extends SimplexEngine {
 
             @Override
             public void onLoad() {
-                this.addGameObject(new Entity(0,0,0));
+                this.addGameObject(new Entity(0.5f,-0.5f,0));
+                this.addGameObject(new Entity(-0.5f,-0.5f,0));
+                this.addGameObject(new Entity(0,0.5f,0));
             }
 
             @Override
@@ -29,6 +31,8 @@ public class SimplexEngineExample extends SimplexEngine {
         };
 
         getSceneManager().loadScene(mainScene);
+
+        this.startLoop();
 
     }
 

@@ -48,6 +48,11 @@ public abstract class SimplexEngine {
 
         renderer.setUpView();
 
+
+    }
+
+    public void startLoop(){
+
         while(!glfwWindowShouldClose(window.getWindowID())){
             //LOOOP
 

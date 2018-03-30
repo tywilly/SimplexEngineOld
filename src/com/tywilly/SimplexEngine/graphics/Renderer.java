@@ -44,7 +44,7 @@ public class Renderer {
     public void setUpView(){
         glMatrixMode(GL_PROJECTION);
         glLoadIdentity();
-        glOrtho(0, engineContext.getWindow().getWidth(), engineContext.getWindow().getHeight(), 0, 1, -1);
+        //glOrtho(0, engineContext.getWindow().getWidth(), engineContext.getWindow().getHeight(), 0, 1, -1);
         glMatrixMode(GL_MODELVIEW);
     }
 
@@ -56,6 +56,7 @@ public class Renderer {
         for(GameObject obj : objects){
 
             obj.onDraw();
+            obj.onUpdate(0);
 
         }
 
