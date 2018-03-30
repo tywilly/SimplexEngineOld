@@ -19,9 +19,9 @@ public class SimplexEngineExample extends SimplexEngine {
 
             @Override
             public void onLoad() {
-                this.addGameObject(new Entity(0.5f,-0.5f,0));
-                this.addGameObject(new Entity(-0.5f,-0.5f,0));
-                this.addGameObject(new Entity(0,0.5f,0));
+                this.addGameObject(new Entity(0.5f,-0.5f,0));// Top triangle
+                this.addGameObject(new Entity(-0.5f,-0.5f,0));// Bottom left triangle
+                this.addGameObject(new Entity(0,0.5f,0));// Bottom right triangle
             }
 
             @Override

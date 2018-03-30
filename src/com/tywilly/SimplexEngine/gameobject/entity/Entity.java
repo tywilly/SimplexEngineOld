@@ -7,7 +7,7 @@ import static org.lwjgl.opengl.GL11.*;
 public class Entity extends GameObject {
 
     private float[] verticies;
-    private int[] indeicie;
+    private int[] indicies;
 
     private float rotX = 0;
 
