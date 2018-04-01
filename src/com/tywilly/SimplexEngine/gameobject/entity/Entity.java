@@ -1,13 +1,20 @@
 package com.tywilly.SimplexEngine.gameobject.entity;
 
 import com.tywilly.SimplexEngine.gameobject.GameObject;
+import com.tywilly.SimplexEngine.graphics.VertexArray;
 
 import static org.lwjgl.opengl.GL11.*;
+import static org.lwjgl.opengl.GL20.glDisableVertexAttribArray;
+import static org.lwjgl.opengl.GL20.glEnableVertexAttribArray;
+import static org.lwjgl.opengl.GL30.glBindVertexArray;
+import static org.lwjgl.system.MemoryUtil.NULL;
 
 public class Entity extends GameObject {
 
-    private float[] verticies;
-    private int[] indicies;
+    private VertexArray va;
+    private float[] vertex = {0.0f, 1.0f, 0.5f,
+            1.0f, -1.0f, 0.5f, -1.0f, -1.0f, 0.5f};
+    private float[] index = {};
 
     private float rotX = 0;
 
@@ -15,27 +22,28 @@ public class Entity extends GameObject {
 
     public Entity(float x, float y, float z) {
         super(x, y, z);
+        va = new VertexArray();
+
+        va.allocate();
+        va.putData(0, vertex);
+        va.putData(1, index);
+
+    }
+
+    @Override
+    public void cleanUp(){
+        va.cleanUp();
     }
 
     @Override
     public void onDraw(){
 
-        glPushMatrix();
+        va.bind();
+        glEnableVertexAttribArray(0);
 
-        glTranslatef(this.getX(), this.getY(), this.getZ());
-        glScalef(scale,scale, 1.0f);
-        glRotatef(rotX, 0.0f, 0.0f, 1.0f);
-
-        glBegin(GL_TRIANGLES);
-        glColor3f(1.0f, 0.0f,0.0f);
-        glVertex3f(0.0f, 1.0f, 0.5f);
-        glColor3f(0.0f, 1.0f,0.0f);
-        glVertex3f(1.0f, -1.0f, 0.5f);
-        glColor3f(0.0f, 0.0f,1.0f);
-        glVertex3f(-1.0f, -1.0f, 0.5f);
-        glEnd();
-
-        glPopMatrix();
+        glDrawArrays(GL_TRIANGLES, 0, vertex.length);
+        glDisableVertexAttribArray(0);
+        glBindVertexArray(0);
 
     }
 

@@ -1,5 +1,7 @@
 package com.tywilly.SimplexEngine.gameobject;
 
+import com.tywilly.SimplexEngine.input.InputEvent;
+
 /**
  * GameObject represents a very basic object in the game.
  */
@@ -41,6 +43,8 @@ public abstract class GameObject {
 
     public void onUpdate(long deltaTime){}
 
-    public void onInput(){}
+    public void onInput(InputEvent event){}
+
+    public void cleanUp(){}
 
 }

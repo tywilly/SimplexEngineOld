@@ -71,6 +71,8 @@ public abstract class SimplexEngine {
 
         logger.info("Shutting down SimplexEngine");
 
+        sceneManager.removeScene();
+
         renderer.cleanUp();
 
     }

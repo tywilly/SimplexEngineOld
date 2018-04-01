@@ -16,6 +16,12 @@ public class InputEvent {
         this.key = key;
     }
 
+    public InputAction getAction(){
+        return action;
+    }
 
+    public char getKey(){
+        return key;
+    }
 
 }
