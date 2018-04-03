@@ -1,17 +1,18 @@
 package com.tywilly.SimplexEngine.gameobject.entity;
 
 import com.tywilly.SimplexEngine.gameobject.GameObject;
-import com.tywilly.SimplexEngine.graphics.VertexArray;
+import com.tywilly.SimplexEngine.graphics.mesh.VertexArray;
+
 
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL20.glDisableVertexAttribArray;
 import static org.lwjgl.opengl.GL20.glEnableVertexAttribArray;
 import static org.lwjgl.opengl.GL30.glBindVertexArray;
-import static org.lwjgl.system.MemoryUtil.NULL;
 
 public class Entity extends GameObject {
 
     private VertexArray va;
+
     private float[] vertex = {0.0f, 1.0f, 0.5f,
             1.0f, -1.0f, 0.5f, -1.0f, -1.0f, 0.5f};
     private float[] index = {};
@@ -26,7 +27,6 @@ public class Entity extends GameObject {
 
         va.allocate();
         va.putData(0, vertex);
-        va.putData(1, index);
 
     }
 

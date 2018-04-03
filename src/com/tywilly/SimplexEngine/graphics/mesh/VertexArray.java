@@ -1,4 +1,4 @@
-package com.tywilly.SimplexEngine.graphics;
+package com.tywilly.SimplexEngine.graphics.mesh;
 
 import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.GL11;
@@ -38,7 +38,7 @@ public class VertexArray {
     }
 
     public void bind(){
-        glBindBuffer(GL_ARRAY_BUFFER, bufferID);
+        glBindVertexArray(bufferID);
     }
 
     public void cleanUp(){

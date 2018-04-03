@@ -40,6 +40,7 @@ public class SimplexEngineExample extends SimplexEngine {
 
         getSceneManager().loadScene(mainScene);
 
+        //Start the main Engine loop
         this.startLoop();
 
     }
