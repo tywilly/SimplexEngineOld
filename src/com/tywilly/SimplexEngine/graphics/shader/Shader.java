@@ -1,12 +1,10 @@
 package com.tywilly.SimplexEngine.graphics.shader;
 
-import org.lwjgl.system.MemoryUtil;
-
 import static org.lwjgl.opengl.GL20.*;
 
 public class Shader {
 
-    private int programID;
+    private int programID, vertexShaderID, fragmentShaderID;;
 
     private String vertexShaderSource, fragmentShaderSource;
 
@@ -17,9 +15,7 @@ public class Shader {
 
     }
 
-    public void loadShader(){
-
-        int vertexShaderID, fragmentShaderID;
+    public void compileShaderSource(){
 
         vertexShaderID = glCreateShader(GL_VERTEX_SHADER);
         glShaderSource(vertexShaderID, vertexShaderSource);
@@ -34,9 +30,14 @@ public class Shader {
         glAttachShader(programID, fragmentShaderID);
         glLinkProgram(programID);
 
-        glDeleteShader(vertexShaderID);
-        glDeleteShader(fragmentShaderID);
+    }
 
+    public String getVertexShaderError(){
+        return glGetShaderInfoLog(vertexShaderID);
+    }
+
+    public String getFragmentShaderError(){
+        return glGetShaderInfoLog(fragmentShaderID);
     }
 
     public void bindShader(){
@@ -44,6 +45,8 @@ public class Shader {
     }
 
     public void deleteShader(){
+        glDeleteShader(vertexShaderID);
+        glDeleteShader(fragmentShaderID);
         glDeleteProgram(programID);
     }
 

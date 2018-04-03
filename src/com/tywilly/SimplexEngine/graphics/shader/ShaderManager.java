@@ -37,21 +37,43 @@ public class ShaderManager {
         try {
             Scanner scan = new Scanner(vertShader);
             while(scan.hasNextLine()){
-                vertShaderSrc = vertShaderSrc + scan.nextLine();
+                vertShaderSrc = vertShaderSrc + scan.nextLine() + "\n";
             }
             scan.close();
 
             scan = new Scanner(fragShader);
             while(scan.hasNextLine()){
-                fragShaderSrc = fragShaderSrc + scan.nextLine();
+                fragShaderSrc = fragShaderSrc + scan.nextLine() + "\n";
             }
             scan.close();
 
             shader = new Shader(vertShaderSrc, fragShaderSrc);
 
-            shaderList.put(shaderName, shader);
+            shader.compileShaderSource();
 
-            logger.info("Shader loaded");
+            String vertShaderError = shader.getVertexShaderError();
+            String fragShaderError = shader.getFragmentShaderError();
+
+            boolean shaderCompileError = false;
+
+            if(vertShaderError != "") {
+                logger.error("VertexShader Compile Error: " + vertShaderError);
+                shaderCompileError = true;
+            }
+
+            if(fragShaderError != "") {
+                logger.error("FragmentShader Compile Error: " + fragShaderError);
+                shaderCompileError = true;
+            }
+
+            if(!shaderCompileError){
+                shaderList.put(shaderName, shader);
+                logger.info("Shader loaded");
+            }else{
+                logger.warn("Shader didn't compile!");
+                shader.deleteShader();
+            }
+
 
         } catch (FileNotFoundException e) {
             logger.error("Failed to load shader! Reason: " + e.getMessage());

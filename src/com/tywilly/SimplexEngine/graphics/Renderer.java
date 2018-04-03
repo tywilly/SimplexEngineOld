@@ -4,6 +4,7 @@ import com.tywilly.SimplexEngine.SimplexEngine;
 import com.tywilly.SimplexEngine.util.SELogger;
 
 import org.lwjgl.glfw.*;
+import org.lwjgl.opengl.GL;
 
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
@@ -26,6 +27,8 @@ public class Renderer {
         if(!glfwInit())
             logger.error("Failed to init GLFW!");
 
+        GL.createCapabilities(); // This is very important.
+
         if(engineContext.getWindow().initWindow() != 0)
             logger.error("Failed to initialize window");
 
@@ -42,6 +45,7 @@ public class Renderer {
         glMatrixMode(GL_PROJECTION);
         glLoadIdentity();
         //glOrtho(0, engineContext.getWindow().getWidth(), engineContext.getWindow().getHeight(), 0, 1, -1);
+        glViewport(0,0, engineContext.getWindow().getWidth(), engineContext.getWindow().getHeight());
         glMatrixMode(GL_MODELVIEW);
     }
 

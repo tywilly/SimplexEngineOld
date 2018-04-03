@@ -17,13 +17,11 @@ public class VertexArray {
     }
 
     public void allocate(){
-
         bufferID = glGenVertexArrays();
         glBindVertexArray(bufferID);
-
     }
 
-    public void putData(int attribIndex, float[] data){
+    public void setAttributeVariable(int attribIndex, float[] data, int size){
 
         int vbo = glGenBuffers();
         glBindBuffer(GL_ARRAY_BUFFER, vbo);
@@ -32,7 +30,7 @@ public class VertexArray {
         fb.put(data);
         fb.flip();
         glBufferData(GL_ARRAY_BUFFER, fb, GL_STATIC_DRAW);
-        GL20.glVertexAttribPointer(attribIndex, 3, GL11.GL_FLOAT, false, 0,0);
+        GL20.glVertexAttribPointer(attribIndex, size, GL11.GL_FLOAT, false, 0,0);
         glBindBuffer(GL_ARRAY_BUFFER, 0);
 
     }

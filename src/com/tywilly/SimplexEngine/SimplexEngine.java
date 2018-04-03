@@ -55,8 +55,6 @@ public abstract class SimplexEngine {
 
         logger.info("Starting game loop");
 
-        GL.createCapabilities(); // This is very important.
-
         renderer.setUpView();
 
 
@@ -67,7 +65,6 @@ public abstract class SimplexEngine {
         long startTime;
         long deltaTime = 0L;
         Shader shader = shaderManager.getShader("default");
-        shader.loadShader();
 
         while(!glfwWindowShouldClose(window.getWindowID())){
             //LOOOP
