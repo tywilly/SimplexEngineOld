@@ -102,6 +102,8 @@ public abstract class SimplexEngine {
 
         sceneManager.removeScene();
 
+        window.cleanUp();
+
         renderer.cleanUp();
 
     }

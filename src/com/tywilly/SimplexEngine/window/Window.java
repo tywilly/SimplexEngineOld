@@ -63,6 +63,10 @@ public class Window {
         this.height = height;
     }
 
+    public void cleanUp(){
+        glfwDestroyWindow(windowID);
+    }
+
     public int getHeight(){
         return height;
     }

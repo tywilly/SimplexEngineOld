@@ -27,11 +27,10 @@ public class Renderer {
         if(!glfwInit())
             logger.error("Failed to init GLFW!");
 
-        GL.createCapabilities(); // This is very important.
-
         if(engineContext.getWindow().initWindow() != 0)
             logger.error("Failed to initialize window");
 
+        GL.createCapabilities(); // This is very important.
     }
 
     public void cleanUp(){
